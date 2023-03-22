@@ -13,7 +13,7 @@ export class UserService {
       ...createUserDto,
       password: await bcrypt.hash(createUserDto.password, 10)
     }
-    const newUser = this.prisma.user.create({
+    const newUser = await this.prisma.user.create({
       data: user,
     })
     return 'Created'
